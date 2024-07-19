@@ -1,0 +1,41 @@
+<h1 id="tableLabel">Courses List</h1>
+
+  <p>This component demonstrates fetching data from the server.</p>
+
+  <p *ngIf="!courses"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+  <div class="mb-3">
+    <div>
+      <table *ngIf="courses" class="table table-striped rounded-3">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (course of courses; track course.name; let i = $index) {
+          <tr>
+            <td scope="row" class="clickable" [routerLink]="[ '/CourseList', course.id ]">{{ course.id }}</td>
+            <td scope="row" class="clickable" [routerLink]="[ '/CourseList', course.id ]">{{ course.name }}</td>
+            <td scope="row" class="clickable" [routerLink]="[ '/CourseList', course.id ]">{{ course.description }}</td>
+            <td scope="row" class="clickable" [routerLink]="[ '/CourseList', course.id ]">{{ course.author }}</td>
+            <td scope="row" class="clickable" [routerLink]="[ '/CourseList', course.id ]">{{ course.cost }}</td>
+            <td scope="row"><button mat-icon-button aria-label="Decreement" [routerLink]="[ '/EditCourse', course.id ]"><mat-icon fontIcon="edit"></mat-icon></button></td>
+            <td scope="row"><button mat-icon-button aria-label="Decreement" (click)="delete(course.id)"><mat-icon fontIcon="delete"></mat-icon></button></td>
+          </tr>
+          }@empty
+          {
+          <tr><td colspan="4">No Courses</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-3">
+      <a [routerLink]="[ '/AddCourse', true ]" class="btn btn-primary btn-lg active" role="button">Add Course</a>
+    </div>
+  </div>

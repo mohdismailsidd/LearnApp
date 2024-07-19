@@ -1,0 +1,46 @@
+<form class="col-sm-5" #courseForm="ngForm">
+    <div class="input-group mb-3">
+      <h2>Course Detail</h2>
+    </div>
+    <div [hidden]="isNew" class="input-group mb-3" data-toggle="tooltip" data-placement="top" title="Id">
+        <span for="courseId" class="input-group-text"  id="courseId-label">Id</span>
+        <input type="text" disabled  class="form-control" id="courseId" [value]="course.id"  aria-label="courseId-label" aria-describedby="courseId-label">
+    </div>
+    <div class="input-group mb-3" data-toggle="tooltip" data-placement="top" title="Course Name">
+      <span for="courseName" class="input-group-text" id="courseName-label">Name</span>
+      <input type="text" [hidden]="isEditMode" ngModel name="name1" class="form-control" id="name1" [value]="course.name" aria-label="courseName-label" aria-describedby="courseName-label">
+      <input type="text" [hidden]="!isEditMode" (keyup)="onKeyUpName($event)" [disabled]="!isEditable" ngModel name="name2" disabled class="form-control" id="name2" [value]="course.name" aria-label="courseName-label" aria-describedby="courseName-label">
+    </div>
+    <div class="input-group mb-3">
+      <span for="description" class="input-group-text" id="description-label">Description</span>
+      <input type="text" [hidden]="isEditMode" ngModel name="description1" class="form-control" id="description1" [value]="course.description" aria-label="description-label" aria-describedby="description-label">
+      <input type="text" [hidden]="!isEditMode" (keyup)="onKeyUpDesc($event)" [disabled]="!isEditable" ngModel name="description2" class="form-control" id="description2" [value]="course.description" aria-label="description-label" aria-describedby="description-label">
+    </div>
+    <div class="input-group mb-3">
+      <span for="author" class="input-group-text" id="author-label">Author</span>
+      <input type="text" [hidden]="isEditMode" ngModel name="author1" class="form-control" id="author1" [value]="course.author" aria-label="author-label" aria-describedby="author-label">
+      <input type="text" [hidden]="!isEditMode" (keyup)="onKeyUpAuthor($event)" [disabled]="!isEditable" ngModel name="author2" class="form-control" id="author2" [value]="course.author" aria-label="author-label" aria-describedby="author-label">
+    </div>
+    <div class="input-group mb-3">
+      <span for="cost" class="input-group-text" id="cost-label">Cost</span>
+      <input type="text" [hidden]="isEditMode" ngModel name="cost1" class="form-control" id="cost1" [value]="course.cost" aria-label="cost-label" aria-describedby="cost-label">
+      <input type="text" [hidden]="!isEditMode" (keyup)="onKeyUpCost($event)" [disabled]="!isEditable" ngModel name="cost2" class="form-control" id="cost2" [value]="course.cost" aria-label="cost-label" aria-describedby="cost-label">
+    </div>
+    <div class="d-flex">
+      <div [hidden]="!isNew">
+        <button (click)=addCourse(courseForm.value) class="btn btn-outline-primary">Add Course</button>
+      </div>
+      <div [hidden]="!isEditMode">
+        <div [hidden]="isEditable">
+          <button (click)=enableEdit() class="btn btn-outline-primary">Edit</button>
+        </div>
+        <div [hidden]="!isEditable">
+          <button [disabled]="isUpdated" (click)=update(courseForm.value) class="btn btn-outline-primary ">Update</button>
+        </div>
+        <div [hidden]="!isEditable" class="ms-auto">
+          <button (click)=enableEdit() class="btn btn-outline-danger">Cancel</button>
+        </div>
+      </div>
+    </div>
+</form>
+

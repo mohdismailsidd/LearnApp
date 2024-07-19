@@ -1,0 +1,9 @@
+.header {
+  background-color: #2E8886;
+  width:auto;
+  color: white;
+}
+
+img {
+  height: -webkit-fill-available;
+}

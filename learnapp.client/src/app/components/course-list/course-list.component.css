@@ -1,0 +1,49 @@
+:host {
+    max-width: 1280px;
+    padding: 2rem;
+    text-align: center;
+}
+
+th {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+td {
+    background-color: #F5F8FB;
+    padding: 5px;
+    text-align: right;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+tr:hover td {
+    -moz-box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+}
+tr:hover td:first-child {
+    -moz-box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+}
+tr:hover td:last-child {
+    -moz-box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 4px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+table {
+    margin: 0 auto;
+    width: max-content;
+    border:thin;
+    border-radius:5px;
+}
+
+
+a, a label{
+    cursor:pointer;
+}
+
+.clickable {
+  cursor: pointer;
+}

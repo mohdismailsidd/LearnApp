@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  apiserver:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=4014
+      - ASPNETCORE_HTTPS_PORTS=4015
+    ports:
+      - 4015:4015
+      - 4014:4014
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

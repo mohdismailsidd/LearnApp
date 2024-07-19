@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "tslib": "^2.6.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}

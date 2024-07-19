@@ -1,0 +1,9 @@
+a {
+  font-size: x-large;
+  --bs-nav-link-hover-color: auto;
+    cursor: pointer;
+}
+
+  a img {
+    cursor: pointer;
+  }

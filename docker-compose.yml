@@ -1,0 +1,60 @@
+version: '3.4'
+
+services:
+  client:
+    image: learnapp/client
+    build:
+      context: .
+      dockerfile: learnapp.client/Dockerfile
+    depends_on: 
+      - apiserver
+    networks:
+      - learnapp
+    ports:
+      - 4210:443
+      - 4200:80
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      
+  apiserver:
+    image: learnapp/server
+    build:
+      context: .
+      dockerfile: LearnApp.Server/Dockerfile
+    depends_on:
+      - database
+    networks:
+      - learnapp
+    ports:
+      - 4015:4015
+      - 4014:4014    
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Lucknow123#
+    ports:
+      - 5433:1433
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Lucknow123# -d master -Q 'select 1' || exit 1"]
+      interval: 10s
+      timeout: 30s
+      retries: 10
+      start_period: 30s
+    networks:
+      - learnapp
+
+volumes:
+  sqlserver_data:
+  
+
+networks:
+  learnapp:
+    driver: bridge

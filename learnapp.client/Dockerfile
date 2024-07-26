@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build --prod
 
 #Stage 2 Deployment on reverse proxy server
-FROM nginx:1.27.0-alpine
+FROM nginx:1.27.0-alpine as nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=node /src/app/dist/learnapp.client/browser /usr/share/nginx/html
 EXPOSE 80

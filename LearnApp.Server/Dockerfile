@@ -23,4 +23,6 @@ RUN dotnet publish "./LearnApp.Server.csproj" -c Release -o /app/publish /p:UseA
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY --from=build ./Certificates/UserSecrets/* /home/app/.microsoft/usersecrets/
+COPY --from=build ./Certificates/Https/* /home/app/.aspnet/https/
 ENTRYPOINT ["dotnet", "LearnApp.Server.dll"]

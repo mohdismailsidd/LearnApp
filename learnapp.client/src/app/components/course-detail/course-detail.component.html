@@ -41,6 +41,9 @@
           <button (click)=enableEdit() class="btn btn-outline-danger">Cancel</button>
         </div>
       </div>
+      <div [hidden]="(!isNew && isEditMode && isEditable) || (!isEditMode && isEditable)">
+        <button [routerLink]="[ '/CourseList']" class="btn btn-outline-secondary">Back</button>
+      </div>
     </div>
 </form>
 

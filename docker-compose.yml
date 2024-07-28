@@ -28,7 +28,13 @@ services:
       - learnapp
     ports:
       - 4015:4015
-      - 4014:4014    
+      - 4014:4014
+    command: bash -c "
+        dotnet dev-certs https
+        && dotnet dev-certs https --trust"
+    environment:
+      - ASPNETCORE_HTTP_PORTS=4014
+      - ASPNETCORE_HTTPS_PORTS=4015
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

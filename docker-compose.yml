@@ -13,9 +13,6 @@ services:
     ports:
       - 4210:443
       - 4200:80
-    volumes:
-      - Certificates/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - Certificates/Https:/home/app/.aspnet/https:ro
       
   apiserver:
     image: learnapp/server

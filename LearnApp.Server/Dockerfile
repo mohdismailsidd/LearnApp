@@ -8,7 +8,7 @@ EXPOSE 4014
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-#COPY ["learnapp.client/nuget.config", "learnapp.client/"]
+#COPY ["learnapp.client/nuget.config", "learnapp.client/"] 
 COPY ["LearnApp.Server/LearnApp.Server.csproj", "LearnApp.Server/"]
 COPY . .
 #COPY ["learnapp.client/learnapp.client.esproj", "learnapp.client/"]

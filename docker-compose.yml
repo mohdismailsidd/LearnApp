@@ -14,8 +14,8 @@ services:
       - 4210:443
       - 4200:80
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - Certificates/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - Certificates/Https:/home/app/.aspnet/https:ro
       
   apiserver:
     image: learnapp/server

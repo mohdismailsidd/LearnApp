@@ -36,8 +36,8 @@ services:
       - ASPNETCORE_HTTP_PORTS=4014
       - ASPNETCORE_HTTPS_PORTS=4015
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - Certificates/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - Certificates/Https:/home/app/.aspnet/https:ro
 
   database:
     image: mcr.microsoft.com/mssql/server:2022-latest
